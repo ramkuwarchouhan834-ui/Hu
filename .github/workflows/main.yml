@@ -16,10 +16,12 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
       - name: Build with Gradle
-        run: gradle build
+        run: |
+          cd totem-github
+          gradle build
       - name: Upload JAR
         uses: actions/upload-artifact@v4
         with:
           name: totem-auto-mod
-          path: build/libs/totem-auto-mod-*.jar
+          path: totem-github/build/libs/totem-auto-mod-*.jar
           if-no-files-found: error
